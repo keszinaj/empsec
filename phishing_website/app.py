@@ -9,8 +9,13 @@ def hello_world():
         login = req["login"]
         psw = req["password"]
         print(req)
+        return redirect("/caught")
+
     return render_template("login.html")
 
-@app.route("/login")
-def hello():
-    return render_template('templates/login.html')
+@app.route("/caught/")
+def user_caught():
+    return render_template("caught.html")
+
+if __name__=="__main__":
+    app.run(debug=True)
