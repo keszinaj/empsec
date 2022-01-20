@@ -1,0 +1,14 @@
+{
+    "fake_mail":[
+        {
+            "text": "Hi,<br>We are updating our accounting system, check out if you can log in using your login adn password,<br> {phishing_link}"
+        },
+        {
+            "text": "Hey,<br> can you check if you have access to this system. {phishing_link}"
+        },
+        {
+            "text": "Hey,<br> please check if our new accounting system works,ASAP. {phishing_link}"
+        }
+
+    ]
+}
