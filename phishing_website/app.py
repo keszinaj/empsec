@@ -17,5 +17,14 @@ def hello_world():
 def user_caught():
     return render_template("caught.html")
 
+@app.route("/addmail/", methods = ["GET", "POST"])
+def add_mail():
+    if request.method == "POST":
+        req = request.form
+        print(req)
+        
+    return render_template("addmail.html")
+
+
 if __name__=="__main__":
     app.run(debug=True)

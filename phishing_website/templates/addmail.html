@@ -13,7 +13,7 @@
     $(document).ready(function(){
         $("#add").click(function(){
             var email = $("#email").val();
-            var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + name + "</td><td>" + email + "</td></tr>";
+            var markup = "<tr><td><input type='checkbox' name='record'></td><td><input type='hidden'  id='mail' name='mail' value='" + email + "'readonly/>"+email+"</td></tr>";
             $("table tbody").append(markup);
             $("#email").val('');
         });
@@ -37,11 +37,10 @@
 </div>
   
 <div class="container">
-<form class = "form-group">
+<form class = "form-group" method="post">
         <input type="text" class="form-control" id="email" placeholder="Email Address">
         <br>
         <input type="button" id ="add"class= "btn btn-success" value="Add Row">
-    </form>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -56,7 +55,8 @@
     <button type="button" class="btn btn-danger" id="delete-row">Delete Row</button>
     <br>
     <br>
-    <button type="button" class="btn btn-danger btn-lg btn-block">Start attack</button>
+    <input type="submit" value = "submit" class="btn btn-danger btn-lg btn-block">
+</form>
 </div>
 
 </body>
