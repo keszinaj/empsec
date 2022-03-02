@@ -1,0 +1,7 @@
+* add new frontend
+   - new settings page
+   - attack page
+   - dashboard
+   - pages preview(easiest one)
+* add backend
+   -authorization
