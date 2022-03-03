@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Hello, world!</title>
+    <script>
+        $(document).ready(function(){
+            $("#add").click(function(){
+                var email = $("#email").val();
+                var markup = "<tr><td><input type='checkbox' name='record'></td><td><input type='hidden'  id='mail' name='mail' value='" + email + "'readonly/>"+email+"</td></tr>";
+                $("table tbody").append(markup);
+                $("#email").val('');
+            });
+            
+            // Find and remove selected table rows
+            $("#delete-row").click(function(){
+                $("table tbody").find('input[name="record"]').each(function(){
+                    if($(this).is(":checked")){
+                        $(this).parents("tr").remove();
+                    }
+                });
+            });
+        });    
+    </script>
+    
+  </head>
+  <body>
+    <div class="grid">
+        <div class="sidebar">
+           <ul class="flex-linki" style="list-style: none; padding-left: 0; position: sticky; top: 0;">
+           <li><a href="#" class="logo-sidebar"> <i class="fa fa-eye fa-lg"> </i>   empsec</a></li>
+           <li><a href="#" class="atack-red option-sidebar"><i class="fa fa-bolt fa-lg">&nbsp;</i>&nbsp;new attack</a></li>
+           <li><a href="#" class="option-sidebar"><i class="fa fa-tachometer" aria-hidden="true">&nbsp;</i>&nbsp;dashboard</a></li>
+            <li><a href="#" class="option-sidebar"><i class="fa fa-television" aria-hidden="true">&nbsp;</i>&nbsp;pages</a></li>
+            <li><a href="#" class="option-sidebar"><i class="fa fa-gear">&nbsp;</i>&nbsp;settings</a></li>
+            </ul>
+        </div>
+        <div class="two">
+        <div class="container inside-addmail">
+            <p class="head-email">Input email addresses:</p>
+            <form class = "form-group" method="post" style="padding-bottom:3%; ">
+                    <input type="text" class="form-control" id="email" placeholder="Email Address">
+                    <br>
+                    <input type="button" id ="add"class= "btn btn-success" value="Add Row" style="margin-bottom:3%;">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-danger" id="delete-row">Delete Row</button>
+                <br>
+                <br>
+                <input type="submit" value = "submit" class="btn btn-danger btn-lg btn-block" style="margin-top:3%;">
+            </form>
+        </div>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  
+  </body>
+</html>

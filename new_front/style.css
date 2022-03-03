@@ -1,0 +1,94 @@
+body{
+    background: #121212;
+}
+.grid {
+    display: grid;
+    grid-template-columns: 15% 85%;
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+
+}
+
+.sidebar{
+    background: #1c1c1c;
+    font-size: 30px;
+    padding: 0;
+}
+.two{
+    background: #121212;
+}
+.flex-linki{
+    list-style-type:none;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+}
+
+.logo-sidebar{
+    flex-grow:1;
+    margin: 0;
+    background-color: #3700B3;
+    border: none;
+    color: white;
+    padding: 18px;
+    width:100%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  margin: 4px 2px;
+}
+.option-sidebar{
+    font-size: 25px;
+    color: white;
+    width:100%;
+    border-bottom-width: 3;
+    border-top-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-style: solid;
+    text-decoration: none;
+    padding: 4% 10%;
+    border-color: black;
+    display: inline-block;
+}
+
+.atack-red:hover{
+    background-color: #CF6679 !important; 
+}
+.option-sidebar:hover {
+    background-color: #3700B3;
+    color: white;
+} 
+.logo-sidebar:hover{
+    color: white;
+
+}
+.head-email{
+    color:white;
+    font-size: 30px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    
+}
+.inside-addmail{
+    width: max-content;
+    border-color: black;
+    border-width: 3;
+    background-color: #1c1c1c;
+    margin-top:5%;
+    margin-bottom: 10%;
+    border-radius: 25px;
+}
+
+.inside-pic{
+    width: max-content;
+    border-color: black;
+    border-width: 3;
+    background-color: #1c1c1c;
+    margin-top:5%;
+    margin-bottom: 10%;
+    border-radius: 25px;
+
+}
