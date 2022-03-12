@@ -83,12 +83,15 @@ body{
 }
 
 .inside-pic{
-    width: max-content;
     border-color: black;
     border-width: 3;
     background-color: #1c1c1c;
     margin-top:5%;
     margin-bottom: 10%;
     border-radius: 25px;
-
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.page-pic{
+    margin-top: 3%;
 }
